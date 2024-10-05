@@ -1,1 +1,2 @@
-# evenhi-frontend-angular
+# EvenHi
+Sistema Gerenciador de Eventos
