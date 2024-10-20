@@ -128,3 +128,18 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Temporary files and cache
+.temp/
+.cache/
+.angular/
+.sass-cache/
+coverage/
+
+# Compiled JavaScript and TypeScript files
+**/*.js
+**/*.js.map
+**/*.d.ts
+
+# Temporary production deployment folder
+www/
