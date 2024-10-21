@@ -16,9 +16,72 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light text-dark">Login</button>
-          <button type="button" class="btn btn-secondary">Cadastrar</button>
+          <button type="button" class="btn btn-outline-light text-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signUpModal">Cadastrar</button>
         </div>
       </div>
     </div>
   </header>
+
+ <!-- Modal Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Fazer login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <!-- <label for="exampleInputEmail1" class="form-label">Email</label> -->
+          <input type="email" placeholder="Email" class="form-control" id="inputEmail" aria-describedby="emailLogin">
+        </div>
+        <div class="mb-3">
+          <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+          <input type="password" placeholder="Senha" class="form-control" id="inputPassword1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+ <!-- Sign-up Login -->
+ <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signUpModalLabel">Entre no EvenHi</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <input type="email" placeholder="Email" class="form-control" id="inputEmailSignUp" aria-describedby="emailLogin">
+        </div>
+
+        <div class="mb-3">
+          <button class="btn btn-outline-info m-1" (click)="activeInputCpf()">CPF</button> 
+          <button class="btn btn-outline-info m-1" (click)="activeInputRg()">RG</button>
+        </div>        
+        
+        <div class="mb-3" *ngIf="enableCpf">
+          <input type="text" placeholder="Cpf" class="form-control" id="cpf" aria-describedby="cpfLogin">
+        </div>  
+
+        <div class="mb-3" *ngIf="enableRg">
+          <input type="text" placeholder="Rg" class="form-control" id="rg" aria-describedby="rgLogin">
+        </div>          
+
+        <div class="mb-3">
+          <input type="password" placeholder="Senha" class="form-control" id="exampleInputPassword1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div> 
