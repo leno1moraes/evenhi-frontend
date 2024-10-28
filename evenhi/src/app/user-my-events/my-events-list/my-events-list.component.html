@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div *ngFor="let myevent of events" class="col-md-4 col-sm-6 mb-4">
+            <div class="event-card p-3">
+                <div class="">ID: {{ myevent.id }}</div>
+                <div class="">STATUS: {{ myevent.status }}</div>
+                <div class="">TITULO: {{ myevent.title }}</div>
+                <div class="">IAMGEM: {{ myevent.urlImage }}</div>
+                <div class="">LOCALIZACAO: {{ myevent.location }}</div>
+                <div class="">DATA: {{ myevent.date }}</div>
+                <div class="">INSCRITOS: {{ myevent.customers }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+

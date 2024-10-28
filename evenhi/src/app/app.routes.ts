@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { ApplicationConfig } from '@angular/core';
 import { ListEventComponent } from './list-event/list-event.component';
 import { AdministratorComponent } from './administrator/administrator.component';
+import { UserMyEventsComponent } from './user-my-events/user-my-events.component';
 
 export const routes: Routes = [    
     {
@@ -29,5 +30,13 @@ export const routes: Routes = [
     {
         path: 'admin/event/user/:action/:id',
         component: AdministratorComponent
-    }       
+    },
+    {
+        path: 'myevents/:action',
+        component: UserMyEventsComponent
+    },
+    {
+        path: 'myevents/:action/:user',
+        component: UserMyEventsComponent
+    }      
 ];

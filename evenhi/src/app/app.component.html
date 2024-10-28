@@ -1,10 +1,12 @@
 
-<app-header *ngIf="hideHeaderFooter"></app-header>
-<app-header-admin *ngIf="!hideHeaderFooter"></app-header-admin>
-<!-- <div class="content">
-  <div>Lista de eventos</div>  
-</div> -->
+<app-header *ngIf="enableHeaderFooterForAdmin && 
+                    enableHeaderFooterForUsers"></app-header>
+
+<app-header-admin *ngIf="!enableHeaderFooterForAdmin"></app-header-admin>
+
+<app-header-my-events *ngIf="!enableHeaderFooterForUsers"></app-header-my-events>
 
 <router-outlet />
 
-<app-footer *ngIf="hideHeaderFooter"></app-footer>
+<app-footer *ngIf="enableHeaderFooterForAdmin && 
+                    enableHeaderFooterForUsers"></app-footer>

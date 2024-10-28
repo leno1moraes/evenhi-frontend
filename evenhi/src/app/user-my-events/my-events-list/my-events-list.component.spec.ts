@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HeaderUserComponent } from './header-user.component';
+import { MyEventsListComponent } from './my-events-list.component';
 
-describe('HeaderUserComponent', () => {
-  let component: HeaderUserComponent;
-  let fixture: ComponentFixture<HeaderUserComponent>;
+describe('MyEventsListComponent', () => {
+  let component: MyEventsListComponent;
+  let fixture: ComponentFixture<MyEventsListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderUserComponent]
+      imports: [MyEventsListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HeaderUserComponent);
+    fixture = TestBed.createComponent(MyEventsListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
