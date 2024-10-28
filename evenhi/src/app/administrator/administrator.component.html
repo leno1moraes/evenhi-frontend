@@ -5,26 +5,27 @@
       <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="/admin" class="nav-link active" aria-current="page">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+            <a href="/admin/event/list" class="nav-link text-white" aria-current="page" (click)="goToInicio()">
+              <!-- <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg> -->
+              <svg class="bi me-2" width="16" height="16"></svg>
               Início
             </a>
           </li>
           <li>
-            <a href="/admin" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+            <a href="/admin/event/create" class="nav-link text-white" aria-current="page" (click)="goToCriarEvento()">
+              <svg class="bi me-2" width="16" height="16"></svg>
               Criar Evento
             </a>
           </li>
           <li>
-            <a href="/admin" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+            <a href="/" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"></svg>
               Voltar para  o Site
             </a>
           </li>
           <li>
-            <a href="/admin" class="nav-link text-white">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+            <a href="/logout" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"></svg>
               Sair
             </a>
           </li>
@@ -34,7 +35,7 @@
   </div>
 
   <div class="col">
-    <main>
+    <main *ngIf="enableListEvent">
       <table class="table">
         <thead>
           <tr>
@@ -53,16 +54,169 @@
               <span *ngIf="evento.status === 0" class="text-secondary">Encerrado</span>
               <span *ngIf="evento.status === 1" class="text-primary">Ativo</span>
             </th>
-            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.title}}</a> </td>
-            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.date}}</a></td>
-            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.location}}</a></td>
-            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.customers}}</a></td>
-            <td> <a href="/admin" style="text-decoration: none;">detallhes</a></td>
+            <td> <a href="/admin/event/detail/{{evento.id}}" style="text-decoration: none; color: black;">{{evento.title}}</a> </td>
+            <td> <a href="/admin/event/detail/{{evento.id}}" style="text-decoration: none; color: black;">{{evento.date}}</a></td>
+            <td> <a href="/admin/event/detail/{{evento.id}}" style="text-decoration: none; color: black;">{{evento.location}}</a></td>
+            <td> <a href="/admin/event/detail/{{evento.id}}" style="text-decoration: none; color: black;">{{evento.customers}}</a></td>
+            <td> <a href="/admin/event/detail/{{evento.id}}" style="text-decoration: none;">detallhes</a></td>
           </tr>          
 
         </tbody>
       </table>
     </main>
+
+    <main *ngIf="enableCreateEvent">
+      <form class="row g-3">
+
+        <div class="col-12">
+          <label for="inputTitleEvent" class="form-label">Evento</label>
+          <input type="text" class="form-control" id="inputTitleEvent" placeholder="Título de evento">
+        </div>
+
+        <div class="col-12">
+          <label for="inputTitleEvent" class="form-label">Logo do Evento</label>
+          <input class="form-control" type="file" id="formFile">
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Endereço</label>
+          <input type="text" class="form-control" id="inputAddress" placeholder="Online, prédio, rua, avenida">
+        </div>
+
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>        
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Cidade</label>
+          <input type="text" class="form-control" id="inputCity">
+        </div>
+
+        <div class="col-10">
+          <label for="inputTicket" class="form-label">Vagas</label>
+          <input type="text" class="form-control" id="inputTicket">
+        </div>    
+        <div class="col-2">
+        </div>            
+        <!-- <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="inputZip">
+        </div> -->
+        <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Ativo
+            </label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+    </main>
+
+    <main *ngIf="enableDetailEvent">
+      <form class="row g-3">
+
+        <div class="col-12">
+          <label for="enableDetailEvent" class="form-label">Evento</label>
+          <input [(ngModel)]="eventModel.title" 
+                  name="title" 
+                  type="text" 
+                  class="form-control" 
+                  id="inputTitleEvent" 
+                  placeholder="Título de evento"
+                  disabled>
+        </div>
+
+        <div class="col-12">
+          <label for="inputTitleEvent" class="form-label">Logo do Evento</label>
+          <!-- <input class="form-control" type="file" id="formFile"> -->
+          <input [(ngModel)]="eventModel.urlImage" 
+                  name="urlImage" 
+                  type="text" 
+                  class="form-control" 
+                  id="inputTitleEvent" 
+                  placeholder="Título de evento" 
+                  disabled>
+        </div>
+
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Endereço</label>
+          <input [(ngModel)]="eventModel.location" 
+                  name="location" 
+                  type="text" 
+                  class="form-control" 
+                  id="inputAddress" 
+                  placeholder="Online, prédio, rua, avenida"
+                  disabled>
+        </div>
+
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select>
+        </div>        
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Cidade</label>
+          <input [(ngModel)]="eventModel.location" 
+                  name="location" 
+                  type="text" 
+                  class="form-control" 
+                  id="inputCity"
+                  disabled>
+        </div>
+
+        <div class="col-10">
+          <label for="inputTicket" class="form-label">Vagas</label>
+          <input [(ngModel)]="eventModel.customers" 
+                  name="customers" 
+                  type="text" 
+                  class="form-control" 
+                  id="inputTicket"
+                  disabled>
+        </div>    
+        <div class="col-2">
+        </div>
+        <div class="col-12">
+          <div class="form-check">
+            
+            <input *ngIf="eventModel.status === 1" 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="gridCheck" 
+                    checked
+                    disabled>
+            <label *ngIf="eventModel.status === 1" 
+                    class="text-primary fw-bold form-check-label" 
+                    for="gridCheck">
+              Ativo
+            </label>
+
+            <input *ngIf="eventModel.status === 0" 
+                    class="form-check-input" 
+                    type="checkbox" 
+                    id="gridCheck"
+                    disabled>
+            <label *ngIf="eventModel.status === 0" 
+                    class="text-secondary fw-bold form-check-label" 
+                    for="gridCheck">
+              Encerrado
+            </label>            
+
+          </div>
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+    </main>    
 
   </div>  
 

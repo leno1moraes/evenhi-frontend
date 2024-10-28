@@ -19,7 +19,11 @@ export const routes: Routes = [
         component: ListEventComponent
     },
     {
-        path: 'admin',
+        path: 'admin/event/:action',
+        component: AdministratorComponent
+    },
+    {
+        path: 'admin/event/:action/:id',
         component: AdministratorComponent
     }
 ];
