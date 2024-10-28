@@ -25,5 +25,9 @@ export const routes: Routes = [
     {
         path: 'admin/event/:action/:id',
         component: AdministratorComponent
-    }
+    },
+    {
+        path: 'admin/event/user/:action/:id',
+        component: AdministratorComponent
+    }       
 ];

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EventModel } from '../models/event-model.model';
 import { Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UserModel } from '../models/user-model';
 
 @Component({
   selector: 'app-administrator',
@@ -23,6 +24,11 @@ export class AdministratorComponent {
     {id: 6, status: 1, title: 'Cinema Novo', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SEX, 15 DEZ . 19:00', customers: 220 },
   ];
 
+  users = [
+    {id: 12, email: 'email.velasco@gmail.com', typedocument: 'cpf', document: '147.818.372-12', password: 'fdfsd5f44654689'},
+    {id: 25, email: 'maria.silva@gmail.com', typedocument: 'rg', document: '7957456', password: '849892935vnvngf545'}
+  ]
+
   pageSize = 3;  // Eventos por página
   currentPage = 1;
   activeLinkInicio = 'active';
@@ -30,7 +36,9 @@ export class AdministratorComponent {
   enableListEvent = false;
   enableCreateEvent = false;
   enableDetailEvent = false;
+  enableAccountEdit  = false;
   eventModel!: EventModel;
+  userModel!: UserModel;
 
 
   constructor(
@@ -63,7 +71,27 @@ export class AdministratorComponent {
           this.enableDetailEvent = true;
         }        
       }        
+    }
+    if (actionRoute === 'user'){
+      const iUser = this.route.snapshot.paramMap.get('id');
+      if(iUser){
+        const userData = this.users.find(user => user.id === Number(iUser));
+        if(userData){
+          this.userModel = new UserModel(
+            userData.id,
+            userData.typedocument,
+            userData.document,
+            userData.email,
+            userData.password
+          );
+          this.enableAccountEdit = true;
+        }
+      }
     }      
+
+
+
+
     console.log("ActionRoute: ", actionRoute);
   }
 
