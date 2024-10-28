@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserAccoutComponent } from './user-accout.component';
+import { AdminListEventComponent } from './admin-list-event.component';
 
-describe('UserAccoutComponent', () => {
-  let component: UserAccoutComponent;
-  let fixture: ComponentFixture<UserAccoutComponent>;
+describe('AdminListEventComponent', () => {
+  let component: AdminListEventComponent;
+  let fixture: ComponentFixture<AdminListEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserAccoutComponent]
+      imports: [AdminListEventComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserAccoutComponent);
+    fixture = TestBed.createComponent(AdminListEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

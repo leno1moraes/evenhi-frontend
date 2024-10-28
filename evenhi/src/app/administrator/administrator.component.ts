@@ -5,11 +5,17 @@ import { EventModel } from '../models/event-model.model';
 import { Injectable } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserModel } from '../models/user-model';
+import { AdminListEventComponent } from './admin-list-event/admin-list-event.component';
+import { AdminCreateEventComponent } from './admin-create-event/admin-create-event.component';
+import { AdminDetailEventComponent } from './admin-detail-event/admin-detail-event.component';
+import { AdminMyaccountComponent } from './admin-myaccount/admin-myaccount.component';
 
 @Component({
   selector: 'app-administrator',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, AdminListEventComponent, AdminCreateEventComponent,
+            AdminDetailEventComponent, AdminMyaccountComponent
+  ],
   templateUrl: './administrator.component.html',
   styleUrl: './administrator.component.css'
 })
