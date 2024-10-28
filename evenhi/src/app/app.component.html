@@ -1,9 +1,10 @@
 
-<app-header></app-header>
+<app-header *ngIf="hideHeaderFooter"></app-header>
+<app-header-admin *ngIf="!hideHeaderFooter"></app-header-admin>
 <!-- <div class="content">
   <div>Lista de eventos</div>  
 </div> -->
 
 <router-outlet />
 
-<app-footer></app-footer>
+<app-footer *ngIf="hideHeaderFooter"></app-footer>

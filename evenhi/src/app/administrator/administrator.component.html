@@ -1,0 +1,74 @@
+
+<div class="row">
+  <div class="col-auto">
+    <nav class="">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="nav-item">
+            <a href="/admin" class="nav-link active" aria-current="page">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              Início
+            </a>
+          </li>
+          <li>
+            <a href="/admin" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              Criar Evento
+            </a>
+          </li>
+          <li>
+            <a href="/admin" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>
+              Voltar para  o Site
+            </a>
+          </li>
+          <li>
+            <a href="/admin" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
+              Sair
+            </a>
+          </li>
+        </ul>
+      </div> 
+    </nav>
+  </div>
+
+  <div class="col">
+    <main>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Status</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Data</th>
+            <th scope="col">Localização</th>
+            <th scope="col">Participação</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let evento of events">
+
+          <tr>
+            <th>
+              <span *ngIf="evento.status === 0" class="text-secondary">Encerrado</span>
+              <span *ngIf="evento.status === 1" class="text-primary">Ativo</span>
+            </th>
+            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.title}}</a> </td>
+            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.date}}</a></td>
+            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.location}}</a></td>
+            <td> <a href="/admin" style="text-decoration: none; color: black;">{{evento.customers}}</a></td>
+            <td> <a href="/admin" style="text-decoration: none;">detallhes</a></td>
+          </tr>          
+
+        </tbody>
+      </table>
+    </main>
+
+  </div>  
+
+</div>
+
+
+
+
+
