@@ -13,3 +13,16 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 30px rgba(0, 0, 0, 0.2);
   }
   
+  .image-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Garante que ocupe o espaço necessário */
+    min-height: 200px; /* Ajuste conforme necessário */
+  }
+  
+  .event-image {
+    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+  

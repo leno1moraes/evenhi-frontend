@@ -2,13 +2,48 @@
     <div class="row">
         <div *ngFor="let myevent of events" class="col-md-4 col-sm-6 mb-4">
             <div class="event-card p-3">
-                <div class="">ID: {{ myevent.id }}</div>
-                <div class="">STATUS: {{ myevent.status }}</div>
-                <div class="">TITULO: {{ myevent.title }}</div>
-                <div class="">IAMGEM: {{ myevent.urlImage }}</div>
-                <div class="">LOCALIZACAO: {{ myevent.location }}</div>
-                <div class="">DATA: {{ myevent.date }}</div>
-                <div class="">INSCRITOS: {{ myevent.customers }}</div>
+                <div class="image-container">
+                    <img src="assets/images/evenhi-logo.png" alt="Imagem do Evento"/>
+                </div>
+
+                <div class="fs-5 fw-bold text-center">
+                    {{ myevent.title }}
+                </div> 
+                
+                <div class="fw-bold text-center mt-3 mb-3">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <span *ngIf="myevent.status === 0" class="text-secondary fw-bold">Encerrado</span>
+                            <span *ngIf="myevent.status === 1" class="text-primary fw-bold">Ativo</span>
+                        </div>
+                        <div class="col-md-7">
+                            <span class="">{{ myevent.date }}</span>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="text-center mb-3 fw-bold"> 
+                    <span>{{ myevent.customers }} Inscritos </span>                    
+                </div>
+
+                <div class="mb-3">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-2">
+                            <img src="assets/images/localization.png" height="40vh" width="40vw" alt="Ícone de localização"/>
+                        </div>
+                        <div class="col-6">
+                            <span class="fw-bold fw-ligh">{{ myevent.location }}</span>
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                </div>
+                
+                <div class="text-center mb-3">
+                    <a href="/myevents/detail/{{ myevent.id }}" class="button">
+                        <button type="button" class="btn btn-outline-info">Detalhes</button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
