@@ -1,3 +1,40 @@
-<p>my-event-detail works!</p>
 
-<p>ID Evento: {{ myEvent }}</p>
+<main class="event-detail-card">
+    <form class="row g-3">
+        <div class="text-center col-12">
+            <img src="assets/images/evenhi-logo.png" alt="Imagem do Evento"/>
+        </div>        
+
+        <div class="col-12 mb-3 fs-1 fw-bold text-center">
+            {{eventModel.title}}
+        </div>
+
+        <div class="col-12 mb-5">
+            <div class="row">
+                <div class="col-md col-sm-12"></div>
+                <div class="col-md col-sm-12">
+                    <img src="assets/images/googlemaps.png" class="rounded" height="200vh" width="380vw" alt="Ícone de localização"/>
+                </div>
+                <div class="col-md col-sm-12">
+                    <span class="fs-4 fw-bold fw-ligh">{{eventModel.location}}</span>
+                </div>
+                <div class="col-md col-sm-12"></div>
+            </div>
+        </div>         
+
+        <div class="col-md col-sm-12"></div>
+        <div class="text-center fs-3 col mb-5">
+            <span *ngIf="eventModel.status === 0" class="text-secondary fw-bold">Encerrado</span>
+            <span *ngIf="eventModel.status === 1" class="text-primary fw-bold">Ativo</span>
+        </div>             
+        <div class="text-center fw-bold fs-3 col-md col-sm-12 mb-5">
+            SAB, 23 NOV . 21:00
+        </div>     
+        <div class="col-md col-sm-12"></div>  
+
+        <div class="text-center col-12">
+            <button type="submit" class="btn btn-primary">Inscrever</button>
+        </div>
+
+    </form>
+  </main>

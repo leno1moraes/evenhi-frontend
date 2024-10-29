@@ -31,16 +31,13 @@ export class MyEventsListComponent {
 
   ngOnInit(){
     this.user = Number(this.route.snapshot.paramMap.get('id')) || 0;
-    console.log("Usuario id 1: ", this.user)
     if (this.user != 0){
       this.events.forEach(element => {
         if (this.user === element.user){
-          console.log("Usuario id 2: ", element.user)
           this.myEvents.push(new EventModel(element.id, element.status, element.title, element.urlImage,
                         element.location, element.date, element.customers));
         }
       });
-      console.log("Meus eventos: ", this.myEvents)
     }
   }
 
