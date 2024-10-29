@@ -36,7 +36,7 @@ export const routes: Routes = [
         component: UserMyEventsComponent
     },
     {
-        path: 'myevents/:action/:user',
+        path: 'myevents/:action/:id',
         component: UserMyEventsComponent
-    }      
+    }     
 ];
