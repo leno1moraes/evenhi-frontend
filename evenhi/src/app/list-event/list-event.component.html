@@ -15,17 +15,25 @@
           <div *ngFor="let event of paginatedEvents">
             <div class="row mb-5">
               <div class="col-md-6">
-                <img [src]="event.pathImage" />
+                <!--<img [src]="event.pathImage" /> -->
+                <img src="assets/images/evenhi-logo.png">
               </div>
               <div class="col-md-6">
                 <div class="row">
                   <span class="h6">{{ event.nameEvent }}</span>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                   <span class="h6">{{ event.city }}</span>
                 </div>
                 <div class="row">
-                  <span>{{ event.date }}</span>
+                  <div class="col-md">
+                    <div class="row mt-2">
+                      <span>{{ event.date | date: 'dd/MM/yy' }}</span>
+                    </div>
+                    <div class="row mt-2">
+                      <span>{{ event.date | date: 'HH:mm' }}</span>
+                    </div>                    
+                  </div>                  
                 </div>
               </div>
             </div>
