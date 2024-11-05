@@ -1,23 +1,34 @@
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen-sm">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Fazer login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-          <!-- <label for="exampleInputEmail1" class="form-label">Email</label> -->
-          <input type="email" placeholder="Email" class="form-control" id="inputEmail" aria-describedby="emailLogin">
+        <div *ngIf="isDisableMsnSuccess" (click) = "closeMsn('s')" class="alert alert-primary m-3" role="alert">
+            {{msnSuccess}}
+        </div>     
+        <div *ngIf="isDisableMsnError" (click) = "closeMsn('e')" class="alert alert-danger m-3" role="alert">
+            {{msnError}}
+        </div>      
+        <div *ngIf="isDisableMsnWarnning" (click) = "closeMsn('w')" class="alert alert-warning m-3" role="alert">
+            {{msnWarnning}}
+        </div>               
+        <div class="modal-header">      
+            <h5 class="modal-title" id="loginModalLabel">Fazer login</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="mb-3">
-          <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-          <input type="password" placeholder="Senha" class="form-control" id="inputPassword1">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Confirmar</button>
-      </div>
+
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="modal-body">
+                <div class="mb-3">
+                <input type="email" placeholder="Email" class="form-control" id="usermail" name="usermail" [(ngModel)]="usermail" required >
+                </div>
+                <div class="mb-3">
+                <input type="password" placeholder="Senha" class="form-control" id="userpassword" name="userpassword" [(ngModel)]="userpassword" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Confirmar</button>
+            </div>
+        </form>
+
     </div>
   </div>
 </div> 
