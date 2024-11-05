@@ -3,8 +3,8 @@
     <form class="row g-3">
       <div class="col-12">
         <label for="enableDetailEvent" class="form-label">Evento</label>
-        <input [(ngModel)]="eventModel.title" 
-                name="title" 
+        <input [(ngModel)]="eventModel.nameEvent" 
+                name="nameEvent" 
                 type="text" 
                 class="form-control" 
                 id="inputTitleEvent" 
@@ -13,8 +13,8 @@
       </div>
       <div class="col-12">
         <label for="inputTitleEvent" class="form-label">Logo do Evento</label>
-        <input [(ngModel)]="eventModel.urlImage" 
-                name="urlImage" 
+        <input [(ngModel)]="eventModel.pathImage" 
+                name="pathImage" 
                 type="text" 
                 class="form-control" 
                 id="inputTitleEvent" 
@@ -23,8 +23,8 @@
       </div>
       <div class="col-12">
         <label for="inputAddress" class="form-label">Endereço</label>
-        <input [(ngModel)]="eventModel.location" 
-                name="location" 
+        <input [(ngModel)]="eventModel.street" 
+                name="street" 
                 type="text" 
                 class="form-control" 
                 id="inputAddress" 
@@ -40,8 +40,8 @@
       </div>        
       <div class="col-md-6">
         <label for="inputCity" class="form-label">Cidade</label>
-        <input [(ngModel)]="eventModel.location" 
-                name="location" 
+        <input [(ngModel)]="eventModel.city" 
+                name="city" 
                 type="text" 
                 class="form-control" 
                 id="inputCity"
@@ -49,8 +49,8 @@
       </div>
       <div class="col-10">
         <label for="inputTicket" class="form-label">Vagas</label>
-        <input [(ngModel)]="eventModel.customers" 
-                name="customers" 
+        <input [(ngModel)]="eventModel.subscribers" 
+                name="subscribers" 
                 type="text" 
                 class="form-control" 
                 id="inputTicket"

@@ -16,13 +16,13 @@ export class MyEventDetailComponent {
   eventModel!: EventModel;
 
   events = [
-    {id: 1, status: 1, title: 'Congresso de Gatronoia', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', customers: 100, user: 1 },
-    {id: 2, status: 0, title: 'Palestra', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', customers: 80, user: 1 },
-    {id: 3, status: 0, title: 'Dog pra cachorro', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', customers: 200, user: 1 },
-    {id: 4, status: 1, title: 'Palestra Dra Laura', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', customers: 115, user: 1 },
-    {id: 5, status: 0, title: 'Aula aberta', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', customers: 75, user: 1 },
-    {id: 6, status: 1, title: 'Cinema Novo', urlImage: 'assets/images/evenhi-logo.png', location: 'Belo Horizonte - MG', date: 'SEX, 15 DEZ . 19:00', customers: 220, user: 1 },
-  ];  
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 1, status: 1, nameEvent: 'Congresso de Gatronoia', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', subscribers: 100, userId: 1 },
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 2, status: 0, nameEvent: 'Palestra', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', subscribers: 80, userId: 1 },
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 3, status: 0, nameEvent: 'Dog pra cachorro', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', subscribers: 200, userId: 1 },
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 4, status: 1, nameEvent: 'Palestra Dra Laura', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', subscribers: 115, userId: 1 },
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 5, status: 0, nameEvent: 'Aula aberta', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SAB, 23 NOV . 21:00', subscribers: 75, userId: 1 },
+    {country: "", state: "", street: "", district: "", zipcode: "78015050", id: 6, status: 1, nameEvent: 'Cinema Novo', pathImage: 'assets/images/evenhi-logo.png', city: 'Belo Horizonte - MG', date: 'SEX, 15 DEZ . 19:00', subscribers: 220, userId: 1 },
+  ];   
 
   constructor(
     private router: Router,
@@ -36,12 +36,18 @@ export class MyEventDetailComponent {
         if (eventData) {
           this.eventModel = new EventModel(
             eventData.id,
+            eventData.nameEvent,
+            eventData.pathImage,
+            eventData.zipcode,
+            eventData.district,
+            eventData.street,
+            eventData.state,
+            eventData.city,
+            eventData.country,
+            eventData.subscribers,
+            eventData.userId,
             eventData.status,
-            eventData.title,
-            eventData.urlImage,
-            eventData.location,
-            eventData.date,
-            eventData.customers
+            eventData.date
           );
         }         
     }

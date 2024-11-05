@@ -15,14 +15,14 @@
           <div *ngFor="let event of paginatedEvents">
             <div class="row mb-5">
               <div class="col-md-6">
-                <img [src]="event.urlImage" />
+                <img [src]="event.pathImage" />
               </div>
               <div class="col-md-6">
                 <div class="row">
-                  <span class="h6">{{ event.title }}</span>
+                  <span class="h6">{{ event.nameEvent }}</span>
                 </div>
                 <div class="row">
-                  <span class="h6">{{ event.location }}</span>
+                  <span class="h6">{{ event.city }}</span>
                 </div>
                 <div class="row">
                   <span>{{ event.date }}</span>

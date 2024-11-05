@@ -8,8 +8,7 @@ import { UserMyEventsComponent } from './user-my-events/user-my-events.component
 export const routes: Routes = [    
     {
         path:'',
-        redirectTo: 'list-events',
-        pathMatch: 'full'
+        component: ListEventComponent
     },
     {
         path:'login',
