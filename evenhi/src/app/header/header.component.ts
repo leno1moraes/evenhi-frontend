@@ -55,16 +55,17 @@ export class HeaderComponent implements OnInit {
     console.log("##### Iniciando Logout #####");
     this.userservice.logout().subscribe((resultset) => {
       if (resultset != "0")
-        console.log("ERRO NO logout", resultset);
+        console.log("ERRO NO logout", resultset);      
       else {
-        console.log("Sucesso logout", resultset);
+        sessionStorage.removeItem('authToken');
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('username');
+        console.log('Logout realizado com sucesso');
+        window.location.href = '/';
       }
     });
 
-    // sessionStorage.removeItem('authToken');
-    // sessionStorage.removeItem('email');
-    // sessionStorage.removeItem('username');
-    // console.log('Logout realizado com sucesso');
+
 
   }
 
