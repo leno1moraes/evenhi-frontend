@@ -20,6 +20,12 @@ export class UserService {
     return this.http.post(this.API+url, body, { headers });
   }
 
+  public logout (): Observable<any> {
+    const url = '/user/logout';
+    this.testroute("Route Teste: "+this.API+url);
+    return this.http.get(this.API+url);
+  }
+
   public testroute(rota: string){
     console.log("Route Teste: ", rota);
   }

@@ -16,8 +16,17 @@
         </form>
 
         <div class="text-end">
-
-          <span *ngIf="username">Olá {{email}}</span>
+          <div *ngIf="username" class="row">
+            <div class="col">
+              <span>Olá,</span>
+            </div>
+            <div class="col">
+              <span class="fw-bolder"> {{email}}</span>              
+            </div>  
+            <div class="col">
+              <span class="">[<span class="text-primary" (click)="logout()"><ins>sair</ins></span>]</span>
+            </div>          
+          </div>
           <button *ngIf="!email" type="button" class="btn btn-outline-light text-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>          
           <button *ngIf="!email" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signUpModal">Cadastrar</button>
         </div>

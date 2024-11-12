@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { EMPTY } from 'rxjs';
 import { __values } from 'tslib';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { EventService } from '../services/event.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +18,13 @@ import { __values } from 'tslib';
 export class HeaderComponent implements OnInit {
   public email: String = '';
   public username: String = '';
+  
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private eventService: EventService,
+    private userservice: UserService,)
+  {}  
 
   ngOnInit(): void {
     const token = sessionStorage.getItem('authToken');
@@ -39,5 +50,22 @@ export class HeaderComponent implements OnInit {
       this.enableCpf = false;
     }
   }  
+
+  public logout(){
+    console.log("##### Iniciando Logout #####");
+    this.userservice.logout().subscribe((resultset) => {
+      if (resultset != "0")
+        console.log("ERRO NO logout", resultset);
+      else {
+        console.log("Sucesso logout", resultset);
+      }
+    });
+
+    // sessionStorage.removeItem('authToken');
+    // sessionStorage.removeItem('email');
+    // sessionStorage.removeItem('username');
+    // console.log('Logout realizado com sucesso');
+
+  }
 
 }
