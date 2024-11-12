@@ -6,11 +6,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
   if (token) {
     const clonedRequest = req.clone({
       setHeaders: {
-        Authorization: 'Basic ' + token
+        Authorization: 'Bearer ' + token
       }
     });
     return next(clonedRequest);
-  }  
+  }   
 
   return next(req);
 };

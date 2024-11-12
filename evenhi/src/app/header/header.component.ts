@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
+import { EMPTY } from 'rxjs';
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,18 @@ import { LoginComponent } from '../login/login.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  public email: String = '';
+  public username: String = '';
+
+  ngOnInit(): void {
+    const token = sessionStorage.getItem('authToken');
+    if(token){
+      this.email = sessionStorage.getItem('email') || '';
+      this.username = sessionStorage.getItem('username') || '';
+    }
+  }
+
   public enableCpf: Boolean = false;
   public enableRg: Boolean = false;
 

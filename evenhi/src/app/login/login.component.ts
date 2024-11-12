@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EventService } from '../services/events/event.service';
+import { EventService } from '../services/event.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -27,28 +28,47 @@ export class LoginComponent implements OnInit{
   constructor(
     private http: HttpClient, 
     private router: Router,
-    private eventService: EventService,)
+    private eventService: EventService,
+    private userservice: UserService,)
   {}
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    this.eventService.login(this.usermail, this.userpassword).subscribe(
-      response => {
-        const token = response.token;
-        sessionStorage.setItem('authToken', token);
-        console.log('Login bem-sucedido');
-        this.msnSuccess = 'Logado com sucesso';
-        this.isDisableMsnSuccess = true;               
-        this.router.navigate(['/']);
-      },
-      error => {
-        this.msnError = 'Erro: ' + error; 
-        this.isDisableMsnError = true;        
-        console.error('Falha no login', error);
-      }
-    );
+
+    if (!this.validate()){
+      this.userservice.login(this.usermail, this.userpassword).subscribe(
+        response => {
+          const token = response.jwtToken;
+          const username_response = response.username;
+          const email_response = response.email;
+          const roles_response = response.roles;           
+          sessionStorage.setItem('authToken', token);
+          sessionStorage.setItem('username', username_response);
+          sessionStorage.setItem('email', email_response);
+          sessionStorage.setItem('roles', roles_response);
+          console.log('Login bem-sucedido');
+          console.log('TOken Gerado: ', token);
+          this.msnSuccess = 'Logado com sucesso';
+          this.isDisableMsnSuccess = true;         
+          window.location.href = '/';         
+        },
+        error => {
+          if (error.error === '991'){
+            this.msnWarnning = "email ou senha incorretos!";
+            this.isDisableMsnWarnning = true;            
+ 
+          }else{
+            this.msnError = 'Erro: interno - contacte o administrador'; 
+            this.isDisableMsnError = true; 
+            console.error('Falha no login', error);
+          }    
+        }
+
+      );
+    }
+
   }
 
   public closeMsn(msn: string){
@@ -57,5 +77,15 @@ export class LoginComponent implements OnInit{
     this.isDisableMsnWarnning = false;
   }
 
+  public validate(): boolean{
+    if ( !this.usermail || !this.userpassword ){
+      this.msnWarnning = "email ou senha incorretos!";
+      this.isDisableMsnWarnning = true;
+      return true;
+    }
+
+    return false;
+
+  }
 
 }

@@ -16,8 +16,10 @@
         </form>
 
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light text-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-          <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signUpModal">Cadastrar</button>
+
+          <span *ngIf="username">Olá {{email}}</span>
+          <button *ngIf="!email" type="button" class="btn btn-outline-light text-dark" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>          
+          <button *ngIf="!email" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#signUpModal">Cadastrar</button>
         </div>
       </div>
     </div>
