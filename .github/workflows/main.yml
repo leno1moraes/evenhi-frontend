@@ -28,6 +28,7 @@ jobs:
 
     # Passo 4: Fazer o build do projeto Angular
     - name: Build Angular project
+      working-directory: ./evenhi
       run: |
         npm run build --prod       
 
