@@ -39,7 +39,7 @@ jobs:
         host: ${{ secrets.VM_HOST }}  # Endereço da sua VM
         username: ${{ secrets.VM_USER }}  # Nome de usuário para SSH na VM
         key: ${{ secrets.VM_SSH_KEY }}  # Chave privada SSH para autenticação
-        source: './dist/**/*'  # Caminho para os arquivos gerados no build do Angular
+        source: './evenhi/dist/evenhi/**/*'  # Caminho para os arquivos gerados no build do Angular
         target: ${{ secrets.VM_PATH_FRONT }}  # Caminho de destino na VM
         port: 22  # Porta SSH
         timeout: 30s
