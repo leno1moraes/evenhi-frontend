@@ -1,2 +1,2 @@
 # EvenHi
-Sistema Gerenciador de Eventos
+Sistema Gerenciador de Eventos (em teste)
