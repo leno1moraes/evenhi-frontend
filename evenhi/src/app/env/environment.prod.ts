@@ -1,3 +1,3 @@
 export const environment = {
-    urlApi: 'http://localhost:8081/api'
+    urlApi: 'http://vps55551.publiccloud.com.br:8081/api'
   };
