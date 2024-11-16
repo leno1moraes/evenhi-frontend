@@ -34,7 +34,7 @@ jobs:
 
     # Passo 5: Transferir os arquivos para a VM remota usando SCP
     - name: Deploy to VM
-      uses: appleboy/scp-action@master
+      uses: appleboy/scp-action@v0.1.7
       with:
         host: ${{ secrets.VM_HOST }}  # Endereço da sua VM
         username: ${{ secrets.VM_USER }}  # Nome de usuário para SSH na VM
