@@ -1,0 +1,63 @@
+name: Build and Deploy Angular Project
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Passo 1: Checkout do código
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Passo 2: Configurar o Node.js 20
+    - name: Set up Node.js 20
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'
+
+    # Passo 3: Instalar as dependências do projeto Angular
+    - name: Install dependencies
+      run: |
+        npm install
+
+    # Passo 4: Fazer o build do projeto Angular
+    - name: Build Angular project
+      run: |
+        npm run build --prod       
+
+    # Passo 5: Transferir os arquivos para a VM remota usando SCP
+    - name: Deploy to VM
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.VM_HOST }}  # Endereço da sua VM
+        username: ${{ secrets.VM_USER }}  # Nome de usuário para SSH na VM
+        key: ${{ secrets.VM_SSH_KEY }}  # Chave privada SSH para autenticação
+        source: './dist/**/*'  # Caminho para os arquivos gerados no build do Angular
+        target: ${{ secrets.VM_PATH }}  # Caminho de destino na VM
+        port: 22  # Porta SSH
+        timeout: 30s
+        command_timeout: 10m
+        use_insecure_cipher: false
+        rm: false
+        debug: true  # Ative para depuração, se necessário
+        strip_components: 0
+        overwrite: false
+        proxy_port: 22
+        proxy_timeout: 30s
+        proxy_use_insecure_cipher: false
+
+    # Step 5: Run Docker Compose to recreate the container
+    - name: Restart Docker Container on VM
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.VM_HOST }}
+        username: ${{ secrets.VM_USER }}
+        key: ${{ secrets.VM_SSH_KEY }}
+        script: |
+          cd ${{ secrets.VM_PATH_RECREATE }}
+          docker compose up --force-recreate -d
