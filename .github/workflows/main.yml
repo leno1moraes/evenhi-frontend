@@ -15,7 +15,7 @@ jobs:
       uses: actions/checkout@v3
 
     # Passo 2: Configurar o Node.js 20
-    - name: S📦 Configurar Node.js 20
+    - name: 📦 Configurar Node.js 20
       uses: actions/setup-node@v3
       with:
         node-version: '20'
