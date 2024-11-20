@@ -11,11 +11,11 @@ jobs:
 
     steps:
     # Passo 1: Checkout do código
-    - name: Checkout code
+    - name: 🔍 Checkout do código
       uses: actions/checkout@v3
 
     # Passo 2: Configurar o Node.js 20
-    - name: Set up Node.js 20
+    - name: S📦 Configurar Node.js 20
       uses: actions/setup-node@v3
       with:
         node-version: '20'
